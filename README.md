@@ -42,8 +42,6 @@ git clone https://github.com/yamazhen/hivemind
 cd hivemind
 ```
 
-Set up the environment variables:
-
 Create a .env file in the root directory and add the following variables:
 ```
 DB_CONNECT = (PASTE YOUR CONNECTION STRING HERE)
