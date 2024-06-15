@@ -1,0 +1,22 @@
+<%- include("./include/_htmlheader") %>
+<body>
+  <%- include("./include/_header") %>
+  <section id="content">
+    <div class="leftcontainer"></div>
+      <div class="settingsbox">
+        <div class="settingscontent">
+          <h1>Edit Post</h1>
+          <p id="postedin">Posted in <%= post.hive_id.hive_name %> Community</p>
+          <form action="/settings/post/<%= post._id %>?_method=PUT" id="accountform" method="POST">
+            <input type="text" class="inputfield" placeholder="Title" name="title" value="<%= post.title %>" required>
+            <input type="text" class="inputfield" placeholder="Content" name="content" value="<%= post.content %>">
+            <input type="text" class="inputfield" placeholder="Text" name="text" value="<%= post.text %>"required>
+            <input type="hidden" name="user_id" value="<%= post.user_id._id %>" required>
+            <input type="hidden" name="hive_id" value="<%= post.hive_id._id %>" required>
+            <button type=submit>Update</button>
+          </form>
+          <a id="backbtn" href="/settings"><i class="fa-solid fa-left-long"></i> Back</a>
+      <div class="rightcontainer"></div>
+    </section>
+  </body>
+</html>

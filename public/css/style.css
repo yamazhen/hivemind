@@ -1,0 +1,936 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+  --maincolor: #373A40;
+  --hiveorange: #DC5F00;
+  --secondarycolor: #686D76;
+  --lightcolor: #EEEEEE;
+}
+* {
+  padding: 0;
+  margin: 0;
+  }
+html,
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar{
+  display: none;
+}
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+}
+input:focus{
+  outline: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* Header */
+#header {
+  background-color: var(--maincolor);
+  height: 60px;
+  width: 100vw;
+  position: fixed;
+  color: var(--lightcolor);
+  z-index: 1;
+}
+#header h1 {
+  color: var(--hiveorange);
+}
+.headerbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 150px;
+  height: auto;
+}
+.header-left {
+  padding: 10px 0px;
+  display: inherit;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+}
+.header-left img{
+  height: 40px;
+  width: auto;
+  padding-right: 10px;
+}
+.header-search{
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  right: 34.25%;
+  width: 500px;
+  height: 20px;
+  background-color: var(--secondarycolor);
+  color: var(--lightcolor);
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease background-color;
+}
+
+.header-search input{
+  background-color: inherit;
+  border: none;
+  width: 450px;
+  height: 35px;
+  font-size: 14px;
+  color: var(--lightcolor);
+}
+.header-search input::placeholder{
+  color: var(--lightcolor);
+}
+.header-search i{
+  padding: 8px;
+}
+#search-clear{
+  border-radius: 100px;
+  /* should be hidden by default*/
+  visibility: hidden;
+}
+#search-clear:hover{
+  background-color: var(--hiveorange);
+}
+.header-right {
+  padding: 10px 0;
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-right-content {
+  padding: 0 10px;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header-right-content i{
+  padding-right: 5px;
+}
+#header-right-setting{
+  padding: 10px;
+}
+#header-right-setting:hover{
+  background-color: var(--secondarycolor);
+  border-radius: 100px;
+}
+#header-login{
+  background-color: var(--hiveorange);
+  padding: 8px 20px;
+  border-radius: 100px;
+}
+#header-login:hover{
+  background-color: var(--secondarycolor);
+}
+.dropbtn{
+  cursor: pointer;
+}
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: var(--maincolor);
+  min-width: 160px;
+  z-index: 1;
+}
+.dropdown-content a{
+  color: var(--lightcolor);
+  padding: 12px 16px;
+  display: block;
+}
+.show {display: block;}
+/*Contents*/
+#content {
+  padding-top: 60px;
+  flex-grow: 1;
+  color: var(--lightcolor);
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--maincolor);
+  min-height: calc(100vh - 60px);
+}
+/* Left Menu Box */
+.menubox {
+  display: inherit;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  width: 435px;
+  position: relative;
+  height: auto;
+}
+.menu-category{
+  display: inherit;
+  flex-direction: column;
+  margin: 10px 10px 10px 150px;
+  justify-content: center;
+  background-color: var(--secondarycolor) ;
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+}
+.menu-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px;
+  border-radius: 10px;
+  transition: 0.5s ease background-color;
+}
+.menu-item:hover{
+  background-color: var(--maincolor);
+  transition: 0.5s ease background-color;
+}
+.menu-category h1{
+  padding-bottom: 8px;
+  font-size: 16px;
+}
+.menu-item i{
+  font-size: 15px;
+  padding-right: 10px;
+}
+.menu-item p{
+  font-size: 14px;
+  text-transform: capitalize;
+}
+/* Middle Box */
+.postbox {
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  height: auto;
+  display: flex;
+}
+.post-category{
+  display: inherit;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+  background-color: var(--secondarycolor);
+  padding: 10px;
+  border-radius: 10px;
+  height: auto;
+  transition: 0.2s ease background-color;
+}
+.post-category:hover{
+  scale: 1.005;
+}
+.post-category h1{
+  padding-bottom: 8px;
+}
+.post-type{
+  margin: 10px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.post-type-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.post-type-group a{
+  background-color: var(--secondarycolor);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: var(--lightcolor);
+}
+.post-type-group #viewbtn{
+  margin: 0;
+  align-content: center;
+}
+.post-type-group #viewbtn:hover{
+  background-color: var(--secondarycolor);
+}
+.post-type-group i{
+  padding-right: 5px;
+}
+.post-type-group a:hover{
+  background-color: var(--hiveorange);
+  transition: 0.5s ease background-color;
+}
+.post-type-group #active{
+  background-color: var(--hiveorange);
+}
+.post-type-group a#active i,
+.post-type-group a#viewbtn i{
+  display: inline-block;
+}
+.post-type-group a:not(active) i{
+  display: none;
+}
+.post-content-top{
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  padding: 10px 0px;
+}
+.post-content-top-left{
+  display: inherit;
+  flex-direction: column;
+  width: 50px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.post-content-top-left p{
+  padding: 5px 0px;
+}
+.post-content-top-left i{
+  color: var(--lightcolor);
+  background-color: var(--maincolor);
+  padding: 8px;
+  border-radius: 100px;
+  transition: 0.5s ease color;
+}
+.post-content-top-left i:hover{
+  color: var(--hiveorange);
+  transition: 0.5s ease color;
+}
+.post-content-top-right{
+  display: inherit;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0 10px;
+  width: 400px;
+  height: auto;
+}
+.post-content-top-right p{
+  font-size: 12px;
+}
+.post-content-top-right h1{
+  font-size: 20px;
+  width: 400px;
+  line-height: 1.2;
+  height: auto;
+  padding: 10px 0;
+}
+.post-content-top-right img{
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.topuserhive {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topuserhive #hivebtn{
+  margin-left: 10px;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  padding: 2px 6px;
+}
+.topuserhive #hivebtn:hover{
+  color: var(--hiveorange);
+}
+.post-content-bottom-box{
+  background-color: var(--maincolor);
+  display: flex;
+  flex-direction: row;
+  color: var(--lightcolor);
+  border-radius: 10px;
+  justify-content: flex-start;
+  padding: 5px 10px;
+}
+.post-content-bottom-box-button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: 0.1s ease background-color, color;
+}
+.post-content-bottom-box-button:hover{
+  background-color: var(--hiveorange);
+  color: var(--lightcolor);
+  transition: 0.1s ease background-color, color;
+}
+.post-content-bottom-box-button p{
+  padding-left: 2px;
+}
+/* Right Box */
+.rightbox {
+  display: inherit;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  width: 490px;
+  position: relative;
+  height: auto;
+}
+.right-category{
+  display: inherit;
+  flex-direction: column;
+  margin: 10px 150px 10px 10px;
+  justify-content: center;
+  background-color: var(--secondarycolor);
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.right-info{
+  display: inherit;
+  flex-direction: row;
+  margin: 10px 150px 10px 10px;
+  justify-content: space-between;
+  background-color: var(--secondarycolor);
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.right-info a{
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+.right-info-item{
+  flex-direction: column;
+  display: flex;
+}
+.right-category h1{
+  font-size: 16px;
+}
+.right-category p{
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.right-category a{
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  border: 1px var(--hiveorange) solid;
+  border-radius: 10px;
+  transition: 0.5s ease background-color;
+}
+.right-category a:hover{
+  background-color: var(--hiveorange);
+  transition: 0.5s ease background-color;
+}
+/* Login */
+#login{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: var(--lightcolor);
+  display: flex;
+}
+.hidden{
+  visibility: hidden;
+  display: none;
+}
+.loginbox{
+  width: auto;
+  height: auto;
+  display: inherit;
+  justify-content: flex-start;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  position: relative
+}
+#loginclose{
+  position: absolute;
+  padding: 10px;
+  margin: 10px;
+  right: 10px;
+  top: 10px;
+  border-radius: 100px;
+}
+#loginclose:hover{
+  background-color: var(--secondarycolor) ;
+}
+.login-contents{
+  display: inherit;
+  flex-direction: column;
+  padding: 80px;
+}
+.login-contents h1{
+  padding-bottom: 10px;
+}
+.login-contents input{
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+.login-contents input::placeholder{
+  color: var(--maincolor);
+  font-size: 16px;
+}
+.login-forgot-register{
+  padding: 10px 0;
+}
+.login-contents p{
+  font-size: 12px;
+}
+.login-contents a{
+  color: #8ecae6;
+}
+.login-contents button{
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: var(--hiveorange);
+  font-size: 14px;
+  transition: 0.5s ease background-color;
+}
+.login-contents button:hover{
+  background-color: var(--secondarycolor);
+  transition: 0.5s ease background-color;
+}
+/* Register */
+#register{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: var(--lightcolor);
+  display: flex;
+}
+.registerbox{
+  width: auto;
+  height: auto;
+  display: inherit;
+  justify-content: flex-start;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  position: relative
+}
+#registerclose{
+  position: absolute;
+  padding: 10px;
+  margin: 10px;
+  right: 10px;
+  top: 10px;
+  border-radius: 100px;
+}
+#registerclose:hover{
+  background-color: var(--secondarycolor) ;
+}
+.register-contents{
+  display: inherit;
+  flex-direction: column;
+  padding: 80px;
+}
+.register-contents h1{
+  padding-bottom: 10px;
+}
+.register-contents input{
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+.register-contents input::placeholder{
+  color: var(--maincolor);
+  font-size: 16px;
+}
+.register-contents p{
+  font-size: 12px;
+}
+.register-contents a{
+  color: #8ecae6;
+}
+.register-contents button{
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: var(--hiveorange);
+  font-size: 14px;
+  transition: 0.5s ease background-color;
+}
+.register-contents button:hover{
+  background-color: var(--secondarycolor);
+  transition: 0.5s ease background-color;
+}
+/* CreateForum */
+#createforum{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: var(--lightcolor);
+  display: flex;
+}
+.createforumbox{
+  width: auto;
+  height: auto;
+  display: inherit;
+  justify-content: flex-start;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  position: relative
+}
+#forumboxclose{
+  position: absolute;
+  padding: 10px;
+  margin: 10px;
+  right: 10px;
+  top: 10px;
+  border-radius: 100px;
+}
+#forumboxclose:hover{
+  background-color: var(--secondarycolor) ;
+}
+.createforum-contents{
+  display: inherit;
+  flex-direction: column;
+  padding: 80px;
+}
+.createforum-contents h1{
+  padding-bottom: 10px;
+}
+.createforum-contents input{
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+.createforum-contents input::placeholder{
+  color: var(--maincolor);
+  font-size: 16px;
+}
+.createforum-contents p{
+  font-size: 12px;
+}
+.createforum-contents a{
+  color: #8ecae6;
+}
+.createforum-contents button{
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: var(--hiveorange);
+  font-size: 14px;
+  transition: 0.5s ease background-color;
+}
+.createforum-contents button:hover{
+  background-color: var(--secondarycolor);
+  transition: 0.5s ease background-color;
+}
+/* Create Post */
+#createpost{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: var(--lightcolor);
+  display: flex;
+}
+.createpostbox{
+  width: auto;
+  height: auto;
+  display: inherit;
+  justify-content: flex-start;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  position: relative
+}
+#postboxclose{
+  position: absolute;
+  padding: 10px;
+  margin: 10px;
+  right: 10px;
+  top: 10px;
+  border-radius: 100px;
+}
+#postboxclose:hover{
+  background-color: var(--secondarycolor) ;
+}
+.createpost-contents{
+  display: inherit;
+  flex-direction: column;
+  padding: 80px;
+}
+.createpost-contents h1{
+  padding-bottom: 10px;
+}
+.createpost-contents input{
+  width: 250px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+.createpost-contents input::placeholder{
+  color: var(--maincolor);
+  font-size: 16px;
+}
+.createpost-contents p{
+  font-size: 12px;
+}
+.createpost-contents a{
+  color: #8ecae6;
+}
+.createpost-contents button{
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: var(--hiveorange);
+  font-size: 14px;
+  transition: 0.5s ease background-color;
+}
+.createpost-contents button:hover{
+  background-color: var(--secondarycolor);
+  transition: 0.5s ease background-color;
+}
+.createpost-contents .custom-select{
+  width: 270px;
+}
+.custom-select select{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+/* Settings Page */
+#settings {
+  padding-top: 60px;
+  flex-grow: 1;
+  color: var(--maincolor);
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--maincolor);
+  min-height: calc(100vh - 60px);
+}
+.leftcontainer {
+  width: 365px;
+  height: auto;
+}
+.rightcontainer {
+  width: 420px;
+  height: auto;
+}
+.settingsbox {
+  flex-grow: 1;
+  flex-direction: column;
+  height: auto;
+  display: flex;
+}
+.settingscontent{
+  display: inherit;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+  background-color: var(--secondarycolor);
+  padding: 40px;
+  border-radius: 10px;
+  height: auto;
+  width: 600px;
+}
+.settingscontent h1{
+  font-size: 20px;
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+.settingscontent ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.settingscontent li{
+  padding-right: 20px;
+  font-size: 16px;
+  color: var(--lightcolor);
+  padding-bottom: 3px;
+}
+.settingscontent #selectedsetting{
+  border-bottom: 3px solid var(--hiveorange);
+  color: var(--hiveorange);
+  padding-bottom: 3px;
+}
+.settingscontent hr{
+  border: 1px solid var(--lightcolor);
+  border-radius: 10px;
+}
+.settingscontent h2{
+  font-size: 16px;
+  font-weight: normal;
+  margin: 10px 0;
+  color: var(--lightcolor);
+}
+.settingscontent form{
+  flex-direction: column;
+  display: flex;
+}
+.settingscontent .inputfield{
+  width: 250px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--lightcolor);
+  background-color: var(--maincolor);
+}
+.settingscontent #accountform button{
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--hiveorange);
+  font-size: 14px;
+  transition: 0.5s ease background-color;
+  color: var(--lightcolor);
+  width: 200px;
+  margin-bottom: 20px;
+}
+.settingscontent #accountform button:hover{
+  background-color: var(--maincolor);
+  transition: 0.5s ease background-color;
+}
+#postedin {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+#backbtn{
+  color: var(--hiveorange);
+}
+#longtext {
+  width: 500px;
+}
+.settingscontent .deleteuserbtn{
+  color: darkred;
+  font-size: 12px;
+  border: 1px solid darkred;
+  padding: 10px;
+  transition: 0.2s ease background-color;
+  background-color: inherit;
+  width: 200px;
+}
+.settingscontent .deleteuserbtn:hover{
+  background-color: darkred;
+  transform: 0.2s ease background-color;
+  color: var(--lightcolor);
+}
+.postlist{
+  border-radius: 10px;
+  background-color: var(--maincolor);
+  padding: 5px 10px;
+}
+.poststitle{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+.posts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid var(--secondarycolor);
+  border-radius: 10px;
+  height: auto;
+}
+.postlist .postleft,
+.postlist .postright{
+  display: inherit;
+  flex-direction: row;
+  align-items: center;
+}
+.postlist .postright button,
+.hivelist .hiveright button{
+  all: unset;
+}
+.postlist p{
+  margin-right: 20px;
+}
+.postlist a{
+  margin-right: 10px;
+}
+.hivelist{
+  border-radius: 10px;
+  background-color: var(--maincolor);
+  padding: 5px 10px;
+}
+.hives{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--secondarycolor);
+  height: auto;
+}
+.hivetitle{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+.hivelist .hiveleft,
+.hivelist .hiveright{
+  display: inherit;
+  flex-direction: row;
+  align-items: center;
+}
+.hivelist p{
+  margin-right: 20px;
+}
+.hivelist a{
+  margin-right: 10px;
+}
+.btndelete{
+  background-color: var(--maincolor);
+  width: auto;
+  color: var(--lightcolor);
+}

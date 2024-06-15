@@ -1,0 +1,16 @@
+ <!-- Create Forum Section --> 
+  <section id="createforum" class="hidden">
+    <div class="createforumbox">
+      <a href="#"><i id="forumboxclose" class="fa-solid fa-x fa-fw"></i></a>
+      <form class="createforum-contents" action="/create" method="POST">
+        <h1>Create your Hive</h1>
+        <input type="text" placeholder="Hive name" name="hive_name" required>
+        <input type="text" placeholder="Hive description" name="hive_desc" required>
+        <% if(user) { %>
+          <input type="hidden" name="hive_creator" value="<%= user.id %>" required>
+        <% } %>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </section>
+

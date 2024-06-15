@@ -1,0 +1,80 @@
+<%- include("./include/_htmlheader") %>
+<body>
+  <%- include("./include/_header") %>
+  <!-- Settings -->
+  <section id="content">
+    <div class="leftcontainer"></div>
+      <div class="settingsbox">
+        <div class="settingscontent">
+          <h1>Settings</h1>
+          <ul>
+            <li><a class="setting-item" href="javascript:void(0);" id="selectedsetting" data-target="accountsetting">Account</a></li>
+            <li><a class="setting-item" href="javascript:void(0);" data-target="postsetting">Posts</a></li>
+            <li><a class="setting-item" href="javascript:void(0);" data-target="hivesetting">Hives</a></li>
+          </ul>
+          <hr>
+          <!-- Account Settings -->
+          <section id="accountsetting">
+            <h2>Account Settings</h2>
+            <form id="accountform" action="/settings/user/<%= user._id %>?_method=PUT" method="POST">
+              <input type="text" class="inputfield" placeholder="Username" name="username" value="<%= user.username %>" required>
+              <input type="text" class="inputfield" placeholder="Email" name="email" value="<%= user.email %>" required>
+              <input type="password" class="inputfield" placeholder="Password" name="password">
+              <button type="submit">Update</button>
+            </form>
+            <form action="/settings/user/<%= user._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="deleteuserbtn">Delete your account</button>
+            </form>
+          </section>
+          <!-- Posts Settings -->
+            <section id="postsetting" class="hidden"> 
+              <h2>Posts Setting</h2>
+              <div class="postlist">
+                <div class="poststitle">
+                  <div class="postleft">
+                    <p>Posts</p>
+                  </div>
+                </div>
+                <% post.forEach( post => { %>
+                <div class="posts">
+                  <div class="postleft">
+                    <p>Hive: <%= post.hive_id.hive_name %></p>
+                    <p>Title: <%= post.title %></p>
+                  </div>
+                  <div class="postright">
+                    <a href="/settings/post/<%= post._id %>" class="editpostbtn"><i class="fa-solid fa-pen-to-square fa-fw"></i></a>
+                    <form action="/settings/post/<%= post._id %>?_method=DELETE" method="POST"><button type="submit"><i class="fa-solid fa-xmark"></i></button></form>
+                  </div>
+                </div>
+                <% }) %>
+              </div>
+            </section>
+            <!-- Hives Settings -->
+            <section id="hivesetting" class="hidden">
+              <h2>Hives Setting</h2>
+              <div class="hivelist">
+                <div class="hivetitle">
+                  <div class="hiveleft">
+                    <p>Hives</p>
+                  </div>
+                </div>
+                <% hive.forEach( hive => { %>
+                  <div class="hives">
+                    <div class="hiveleft">
+                      <p><%= hive.hive_name %></p>
+                      <p><%= hive.hive_desc %></p>
+                    </div>
+                    <div class="hiveright">
+                      <a href="/settings/hive/<%= hive._id %>"><i class="fa-solid fa-pen-to-square fa-fw"></i></a>
+                      <form action="/settings/hive/<%= hive._id%>?_method=DELETE" method="POST"><button type="submit" class="btndelete"><i class="fa-solid fa-xmark"></i></button></form>
+                    </div>
+                  </div>
+                <% }) %>
+              </div>
+            </section>
+          </div>
+        </div>
+      <div class="rightcontainer"></div>
+    </section>
+  </body>
+</html>

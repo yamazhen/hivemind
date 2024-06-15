@@ -1,0 +1,35 @@
+  <!-- Header -->
+  <section id="header">
+    <div class="headerbox">
+      <div class="header-left">
+          <a href="/"><h1>Hivemind</h1></a>
+      </div>
+      <div class="header-search">
+        <i id="search-icon"class="fa-solid fa-magnifying-glass"></i>
+        <div class="searchbox">
+          <input id="search-input" type="text" placeholder="Search Hivemind">
+        </div>
+        <i id="search-clear" class="fa-solid fa-circle-xmark"></i>
+      </div>
+      <div class="header-right">
+        <% if (user) { %>
+          <a href="/logout" id="logoutbtn"><div class="header-right-content" id="header-login">
+            <i class="fa-solid fa-user fa-fw"></i>
+            <p><%= user.username %></p>
+          </div></a>
+          <a href="/settings">
+            <div class="header-right-content">
+              <i id="header-right-setting" class="fa-solid fa-gear"></i>
+            </div>
+          </a>
+        <% } else { %>
+          <a href="javascript:void(0);" id="loginbtn">
+            <div class="header-right-content">
+              <p id="header-login">Log In</p>
+            </div>
+          </a>
+        <% } %>
+      </div>
+    </div>
+  </section>
+

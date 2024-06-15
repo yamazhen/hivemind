@@ -1,0 +1,25 @@
+<!-- Create Post Section -->
+  <section id="createpost" class="hidden">
+    <div class="createpostbox">
+      <a href="#"><i id="postboxclose" class="fa-solid fa-x fa-fw"></i></a>
+      <form class="createpost-contents" action="/createpost" method="POST">
+        <h1>Create your Post</h1>
+        <input type="text" placeholder="Title" name="title" required>
+        <input type="text" placeholder="Content" name="content">
+        <input type="text" placeholder="Text" name="text" required>
+        <% if(user) { %>
+          <input type="hidden" name="user_id" value="<%= user._id %>" required>
+        <% } %>
+        <div class="custom-select">
+          <h4>Select a Community<h4>
+          <select name="hive_id" id="hive_id">
+            <% hive.forEach( hive => { %>
+            <option value="<%= hive._id %>"><%= hive.hive_name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </section>
+

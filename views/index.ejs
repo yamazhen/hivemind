@@ -1,0 +1,112 @@
+<%- include("./include/_htmlheader.ejs") %>
+<body>
+  <%- include("./include/_createpost") %>
+  <%- include("./include/_createforum") %>
+  <%- include("./include/_register") %>
+  <%- include("./include/_login") %>
+  <%- include("./include/_header") %>
+  <!-- Content -->
+  <section id="content">
+    <div class="menubox">
+      <div class="menu-category">
+        <a href="javascript:void(0);"><div class="menu-item">
+          <i class="fa-solid fa-house fa-fw"></i>
+          <p>Home</p>
+        </div></a>
+        <% if(user) { %>
+          <a href="javascript:void(0);">
+            <div class="menu-item" id="createpostbtn">
+              <i id="createpostbtn" class="fa-solid fa-plus fa-fw"></i>
+              <p id="createpostbtn">Create a Post</p>
+            </div>
+          </a>
+        <% } %>
+      </div>
+      <div class="menu-category">
+        <h1>Popular Communities</h1>
+        <% hive.forEach( hive => { %>
+        <a href="javascript:void(0);"><div class="menu-item">
+          <p><%= hive.hive_name %></p>
+        </div></a>
+        <% }) %>
+      </div>
+    </div>
+    <div class="postbox">
+      <div class="post-type">
+        <div class="post-type-group">
+          <a href="javascript:void(0);" id="active"><i class="fa-solid fa-fire fa-fw"></i>Best</a>
+          <a href="javascript:void(0);"><i class="fa-solid fa-up-long fa-fw"></i>Rising</a>
+          <a href="javascript:void(0);"><i class="fa-solid fa-clock fa-fw"></i>New</a>
+        </div>
+        <div class="post-type-group">
+          <a href="javascript:void(0);" id="viewbtn"><i class="fa-solid fa-eye fa-fw"></i>View</a>
+        </div>
+      </div>
+      <% post.forEach( post => { %>
+      <a href="">
+        <div class="post-category">
+          <div class="post-content">
+            <div class="post-content-top">
+              <div class="post-content-top-left">
+                <i class="fa-solid fa-thumbs-up fa-fw"></i>
+                <p><%= post.likes %></p>
+                <i class="fa-solid fa-thumbs-down fa-fw"></i>
+              </div>
+              <div class="post-content-top-right">
+                <div class="topuserhive">
+                  <p>posted by <%= post.user_id.username %></p>
+                  <p id="hivebtn"><%= post.hive_id.hive_name %></p>
+                </div>
+                <h1><%= post.title %></h1>
+                <!-- TODO add a script here to display post.content if it exists-->
+              </div>
+            </div>
+            <div class="post-content-bottom">
+              <div class="post-content-bottom-box">
+                <a href="">
+                  <div class="post-content-bottom-box-button">
+                    <i class="fa-solid fa-comment fa-fw"></i>
+                    <p><%= post.commentscount %> Comments</p>
+                  </div>
+                </a>
+                <a href="">
+                  <div class="post-content-bottom-box-button">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <p>Save</p>
+                  </div>
+                </a>
+                <a href="">
+                  <div class="post-content-bottom-box-button">
+                    <i class="fa-solid fa-share fa-fw"></i>
+                    <p>Share</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+    <div class="rightbox">
+    <% if(user) { %>
+      <div class="right-category">
+        <p>Your personal hive frontpage</p>
+        <h1>Come here to check in with your favorite communities</h1>
+        <a href="javascript:void(0);" id="createforumbtn">Create community</a>
+      </div>
+    <% } %>
+      <div class="right-info">
+        <div class="right-info-item">
+          <a href="">User agreement</a>
+          <a href="">Privacy policy</a>
+        </div>
+        <div class="right-info-item">
+          <a href="">Content policy</a>
+          <a href="">Moderator code of conduct</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

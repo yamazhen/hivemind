@@ -1,0 +1,19 @@
+<%- include("./include/_htmlheader") %>
+<body>
+  <%- include("./include/_header") %>
+  <section id="content">
+    <div class="leftcontainer"></div>
+      <div class="settingsbox">
+        <div class="settingscontent">
+          <h1>Edit hive</h1>
+          <form action="/settings/hive/<%= hive._id %>?_method=PUT" id="accountform" method="POST">
+            <input type="text" class="inputfield" placeholder="Hive Name" name="hive_name" value="<%= hive.hive_name %>" required>
+            <input id="longtext" type="text" class="inputfield" placeholder="Hive Description" name="hive_desc" value="<%= hive.hive_desc %>">
+            <input type="hidden" name="hive_creator" value="<%= hive.hive_creator %>" required>
+            <button type=submit>Update</button>
+          </form>
+          <a id="backbtn" href="/settings"><i class="fa-solid fa-left-long"></i> Back</a>
+      <div class="rightcontainer"></div>
+    </section>
+  </body>
+</html>
