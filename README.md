@@ -1,5 +1,5 @@
 # Introduction
-This project is a clone of the popular website Reddit, created as a backend practice for my third-year final project at university. The main objective is to replicate core functionalities of Reddit, focusing on the backend development process. This project allows users to create posts, comment on posts, upvote or downvote posts and comments, and join different communities (subreddits).
+This project is a forum platform heavily inspired by the popular website Reddit, created as a backend practice for my third-year final project at university. The main objective is to replicate core functionalities of Reddit, focusing on the backend development process. This project allows users to create posts, comment on posts, upvote or downvote posts and comments, and join different communities (subreddits).
 
 ## Features
 
