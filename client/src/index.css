@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+body {
+  color: white;
+  width: 100dvw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
+  background: rgb(9 9 11);
+  border-color: #3b3b3b;
+  user-select: none;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+#leftmenu:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(39 39 42);
+  border-radius: 10px;
+  background-clip: content-box;
+  border: 2px solid transparent;
+}
+
+.screen-max-width {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+}
+
+@layer utilities {
+  .login-btn {
+    @apply rounded-3xl bg-hiveOrange-normal py-[10px] px-[13px] text-sm whitespace-nowrap hover:bg-hiveOrange-darker transition-all cursor-pointer;
+  }
+
+  .nav-gray-hover-btn {
+    @apply rounded-full text-sm py-[13px] px-[13.9px] hover:bg-zinc-800 text-center text-sm cursor-pointer;
+  }
+
+  .search-bar {
+    @apply bg-zinc-800 py-[9px] px-4 lg:w-[550px] max-lg:w-3/5 max-sm:w-2/5 rounded-3xl cursor-text flex items-center gap-2 hover:bg-zinc-600 transition-all font-arial;
+  }
+
+  .navbar {
+    @apply flex w-full screen-max-width justify-between items-center py-2 border-b border-zinc-600;
+  }
+
+  .search-input {
+    @apply outline-none bg-inherit w-full text-sm placeholder:text-zinc-400 text-zinc-100;
+  }
+
+  .active {
+    @apply bg-zinc-800 text-zinc-100;
+  }
+
+  .menu-btns {
+    @apply flex px-6 py-2.5 items-center gap-4 rounded-lg hover:bg-zinc-900 font-sans font-light transition-all text-zinc-300 hover:text-zinc-100 cursor-pointer w-full tracking-wide text-[13px];
+  }
+
+  .content-filter-btns {
+    @apply flex items-center gap-2 hover:bg-zinc-800 rounded-3xl h-8 text-zinc-400 text-center justify-center;
+  }
+  .menu {
+    @apply h-[calc(100vh-57px)] w-[280px] border-r border-zinc-600 fixed z-10 overflow-y-auto bg-zinc-950 xl:block
+  }
+}
