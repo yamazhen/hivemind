@@ -47,7 +47,7 @@ body {
   }
 
   .nav-gray-hover-btn {
-    @apply rounded-full text-sm py-[13px] px-[13.9px] hover:bg-zinc-800 text-center cursor-pointer;
+    @apply rounded-full text-sm py-[13px] px-[13.9px] hover:bg-zinc-800 text-center cursor-pointer leading-none;
   }
 
   .search-bar {
