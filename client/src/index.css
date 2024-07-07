@@ -34,7 +34,9 @@ body {
   background-clip: content-box;
   border: 2px solid transparent;
 }
-
+.fa {
+  vertical-align: middle;
+}
 .screen-max-width {
   margin-inline-start: auto;
   margin-inline-end: auto;
@@ -47,7 +49,7 @@ body {
   }
 
   .nav-gray-hover-btn {
-    @apply rounded-full text-sm py-[13px] px-[13px] hover:bg-zinc-800 text-center cursor-pointer leading-none;
+    @apply rounded-full text-sm py-[13px] px-[14px] hover:bg-zinc-800 text-center cursor-pointer leading-none;
   }
 
   .search-bar {

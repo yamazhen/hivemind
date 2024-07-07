@@ -22,11 +22,9 @@ const Navbar = ({ toggleMenu }: Props) => {
     <header className="px-2 flex fixed w-full bg-zinc-950 z-20">
       <nav className="navbar">
         <div className="flex pl-2 gap-2 pr-8 items-center">
-          <FontAwesomeIcon
-            icon={faBars}
-            className="nav-gray-hover-btn xl:hidden"
-            onClick={toggleMenu}
-          />
+          <div className="nav-gray-hover-btn xl:hidden" onClick={toggleMenu}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
           <img
             src={hiveImg}
             alt="Hivemind"
@@ -51,8 +49,12 @@ const Navbar = ({ toggleMenu }: Props) => {
         </div>
         <div className="flex gap-3 justify-center text-center pl-8 items-center pr-2">
           <h1 className="login-btn">Log In</h1>
-          <FontAwesomeIcon icon={faMagnifyingGlass} className="nav-gray-hover-btn hidden max-sm:block" />
-          <FontAwesomeIcon icon={faEllipsis} className="nav-gray-hover-btn" />
+          <div className="nav-gray-hover-btn hidden max-sm:block">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </div>
+          <div className="nav-gray-hover-btn">
+            <FontAwesomeIcon icon={faEllipsis} />
+          </div>
         </div>
       </nav>
     </header>
