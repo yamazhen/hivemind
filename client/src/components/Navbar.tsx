@@ -8,7 +8,7 @@ import { hiveImg, hiveNavbar } from "../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
-  toggleMenu: () => (void);
+  toggleMenu: () => void;
 }
 
 const Navbar = ({ toggleMenu }: Props) => {
@@ -30,7 +30,7 @@ const Navbar = ({ toggleMenu }: Props) => {
           <img
             src={hiveImg}
             alt="Hivemind"
-            width={30}
+            width={28}
             className="hidden max-lg:block"
           />
           <img
@@ -51,6 +51,7 @@ const Navbar = ({ toggleMenu }: Props) => {
         </div>
         <div className="flex gap-3 justify-center text-center pl-8 items-center pr-2">
           <h1 className="login-btn">Log In</h1>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="nav-gray-hover-btn hidden max-sm:block" />
           <FontAwesomeIcon icon={faEllipsis} className="nav-gray-hover-btn" />
         </div>
       </nav>
