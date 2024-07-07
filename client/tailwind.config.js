@@ -11,6 +11,10 @@ export default {
           normal: '#DC5F00',
           darker: '#B34D00'
         },
+        invertOrange: {
+          normal: '#23A0FF',
+          darker: '#4cb2ff'
+        },
       },
       fontFamily: {
         arial: ['arial'],
