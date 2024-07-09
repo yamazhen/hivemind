@@ -13,14 +13,12 @@ import { useState } from "react";
 const Post = () => {
   // TODO: add the interaction section (like dislike comment) also find a way to limit the amount of text in the content
   //
-  const [message, setMessage] = useState<string>('');
+  const [message, setMessage] = useState<string>("");
   axios.get("http://localhost:8000").then((response) => {
     setMessage(response.data);
   });
   return (
-    <section
-      className="hover:bg-zinc-900 h-auto py-[4px] px-[16px] rounded-3xl my-1 cursor-pointer"
-    >
+    <section className="hover:bg-zinc-900 h-auto py-[4px] px-[16px] rounded-3xl my-1 cursor-pointer">
       <div className="flex justify-between mb-1">
         <div className="flex items-center gap-1 justify-center text-center">
           <FontAwesomeIcon icon={faUserCircle} size="lg" />
@@ -36,7 +34,11 @@ const Post = () => {
         </div>
       </div>
       <div className="font-sans mb-[16px]">
-        <h1 className="font-normal text-lg mb-[8px]">{message}</h1>
+        {message ? (
+          <h1 className="font-normal text-lg mb-[8px]">{message}</h1>
+        ) : (
+          <h1 className="font-normal text-lg mb-[8px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+        )}
         <p className="font-light text-sm max-sm:hidden">
           Video games have come a long way since their inception in the early
           1970s. What started as simple pixelated games on arcade machines has
