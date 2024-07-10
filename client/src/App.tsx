@@ -3,17 +3,24 @@ import Navbar from "./components/Navbar";
 import Content from "./components/Content";
 import { useState } from "react";
 import ContentMenu from "./components/ContentMenu";
+import Login from "./components/Login";
 
 function App() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isLoginMenuVisible, setIsLoginMenuVisible] = useState(false);
+
+  const toggleLoginMenu = () => {
+    setIsLoginMenuVisible(!isLoginMenuVisible);
+  }
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   }; 
 
   return (
     // TODO: add the left navigation bar, posts box, right side community discovery
-    <main>
-      <Navbar toggleMenu={toggleMenu}/>
+    <main id="main" className="overflow-y-hidden">
+      <Login visible={isLoginMenuVisible} onClose={toggleLoginMenu}/>
+      <Navbar toggleMenu={toggleMenu} toggleLogin={toggleLoginMenu}/>
       <span className="block h-[57px]"></span> 
       <section className="flex">
         <Menu isVisible={isMenuVisible}/>

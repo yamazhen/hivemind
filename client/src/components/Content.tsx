@@ -21,6 +21,12 @@ const Content = () => {
       <Post />
       <hr className="border-zinc-600"/>
       <Post />
+      <hr className="border-zinc-600"/>
+      <Post />
+      <hr className="border-zinc-600"/>
+      <Post />
+      <hr className="border-zinc-600"/>
+      <Post />
     </section>
   );
 };

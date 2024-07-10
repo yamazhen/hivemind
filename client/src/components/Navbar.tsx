@@ -9,9 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
   toggleMenu: () => void;
+  toggleLogin: () => void;
 }
 
-const Navbar = ({ toggleMenu }: Props) => {
+const Navbar = ({ toggleMenu, toggleLogin }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const handleIconClick = () => {
     if (inputRef.current) {
@@ -48,7 +49,7 @@ const Navbar = ({ toggleMenu }: Props) => {
           />
         </div>
         <div className="flex gap-3 justify-center text-center pl-8 items-center pr-2">
-          <h1 className="login-btn">Log In</h1>
+          <h1 className="login-btn" onClick={toggleLogin} >Log In</h1>
           <div className="nav-gray-hover-btn hidden max-sm:block">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </div>

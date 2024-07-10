@@ -2,7 +2,7 @@ import PopularCommunities from "./PopularCommunities"
 
 const ContentMenu = () => {
   return (
-    <section className="hidden pt-10 pl-2 pr-6 lg:flex w-1/4 h-full items-center justify-center xl:justify-start">
+    <section className="hidden pt-10 pl-2 pr-6 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start">
       <div className="w-[275px] bg-black rounded-md px-4 py-2 text-zinc-300">
         <h1 className="my-[12px] uppercase text-[12px] tracking-widest">Popular Communities</h1>
         <PopularCommunities members={10020039} hive="Cooking"/>

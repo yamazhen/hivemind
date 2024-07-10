@@ -11,8 +11,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const Post = () => {
-  // TODO: add the interaction section (like dislike comment) also find a way to limit the amount of text in the content
-  //
+  // TODO: find a way to limit the amount of text in the content
   const [message, setMessage] = useState<string>("");
   axios.get("http://localhost:8000").then((response) => {
     setMessage(response.data);

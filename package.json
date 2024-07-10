@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently \"npm run server --silent\" \"npm run client --silent\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm run dev"
   },
