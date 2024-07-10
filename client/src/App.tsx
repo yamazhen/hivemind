@@ -1,7 +1,7 @@
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContentMenu from "./components/ContentMenu";
 import Login from "./components/Login";
 
@@ -15,6 +15,18 @@ function App() {
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   }; 
+
+  useEffect(() => {
+    if(isLoginMenuVisible) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflowY = 'auto';
+    };
+  }, [isLoginMenuVisible]);
 
   return (
     // TODO: add the left navigation bar, posts box, right side community discovery
