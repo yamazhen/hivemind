@@ -13,9 +13,12 @@ import gsap from "gsap";
 interface Props {
   toggleMenu: () => void;
   toggleLogin: () => void;
+  closeLeftMenu: () => void;
 }
 
-const Navbar = ({ toggleMenu, toggleLogin }: Props) => {
+// BUG: ellipsis dropdown menu persists even after clicking other elements
+
+const Navbar = ({ toggleMenu, toggleLogin, closeLeftMenu }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
 
@@ -88,7 +91,7 @@ const Navbar = ({ toggleMenu, toggleLogin }: Props) => {
           <div className="nav-gray-hover-btn hidden max-sm:block">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </div>
-          <div className="relative inline-block">
+          <div className="relative inline-block" onClick={closeLeftMenu}>
             <div className="nav-gray-hover-btn" onClick={toggleEllipsisMenu}>
               <FontAwesomeIcon icon={faEllipsis} />
             </div>
