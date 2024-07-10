@@ -36,7 +36,7 @@ function App() {
       <span className="block h-[57px]"></span> 
       <section className="flex">
         <Menu isVisible={isMenuVisible}/>
-        { isMenuVisible && <span className="w-full block xl:hidden absolute bg-black h-full opacity-50"/>}
+        { isMenuVisible && <span className="w-full block xl:hidden absolute bg-black h-full opacity-50" onClick={toggleMenu}/>}
         <span className="hidden xl:block md:w-1/3 lg:w-1/4 h-full"></span>
         <Content />
         <ContentMenu />
