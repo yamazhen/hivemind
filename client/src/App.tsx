@@ -37,7 +37,7 @@ function App() {
     }
   }, [isEllipsisVisible]);
   return (
-    // TODO: add the left navigation bar, posts box, right side community discovery
+    // TODO add the left navigation bar, posts box, right side community discovery
     <main id="main">
       <Login visible={isLoginMenuVisible} onClose={toggleLoginMenu} />
       <Navbar

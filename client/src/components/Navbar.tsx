@@ -17,6 +17,7 @@ interface Props {
 }
 
 // BUG: ellipsis dropdown menu persists even after clicking other elements
+// BUG: if u click the left menu then the ellipsis then the left menu again they are both visible
 
 const Navbar = ({ toggleMenu, toggleLogin, closeLeftMenu }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
