@@ -2,10 +2,11 @@ import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
 import { useEffect, useState } from "react";
-import ContentMenu from "./components/ContentMenu";
 import Login from "./components/Login";
+import RightContentMenu from "./components/RightContentMenu";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isLoginMenuVisible, setIsLoginMenuVisible] = useState(false);
   const [isEllipsisVisible, setIsEllipsisVisible] = useState(false);
@@ -56,7 +57,7 @@ function App() {
         )}
         <span className="hidden xl:block md:w-1/3 lg:w-1/4 h-full"></span>
         <Content />
-        <ContentMenu />
+        <RightContentMenu isLoggedIn={isLoggedIn} />
       </section>
     </main>
   );
