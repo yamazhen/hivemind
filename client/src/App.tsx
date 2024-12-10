@@ -68,10 +68,7 @@ function App() {
             <div className="flex">
               <span className="hidden xl:block md:w-1/3 lg:w-[300px] h-full"></span>
               <Content />
-              <RightContentMenu
-                isInHive={isInHive}
-                clickHive={() => setIsInHive(isInHive)}
-              />
+              <RightContentMenu isInHive={isInHive} />
             </div>
           </>
         ) : (
