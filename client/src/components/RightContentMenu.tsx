@@ -15,7 +15,8 @@ const RightContentMenu = ({ isLoggedIn, isInHive }: Props) => {
           <h1 className="my-[12px] uppercase text-[12px] tracking-widest">
             Popular Communities
           </h1>
-          <PopularCommunities members={10020039} hive="Cooking" />
+          <PopularCommunities members={10020039} hive="meow" />
+          <PopularCommunities members={9320039} hive="Cooking" />
           <PopularCommunities members={9003009} hive="Swimming" />
           <PopularCommunities members={9001006} hive="Gaming" />
           <PopularCommunities members={8901436} hive="Korea" />

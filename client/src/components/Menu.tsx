@@ -1,6 +1,5 @@
 import {
   faArrowTrendUp,
-  faCaretDown,
   faFaceLaugh,
   faFilm,
   faGamepad,

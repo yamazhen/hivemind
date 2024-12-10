@@ -7,8 +7,10 @@ import RightContentMenu from "./components/RightContentMenu";
 import HiveBanner from "./components/HiveBanner";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isInHive, setIsInHive] = useState(false);
+  /*const [isLoggedIn, setIsLoggedIn] = useState(false);*/
+  /*const [isInHive, setIsInHive] = useState(false);*/
+  const isInHive = false;
+  const isLoggedIn = false;
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isLoginMenuVisible, setIsLoginMenuVisible] = useState(false);
   const [isEllipsisVisible, setIsEllipsisVisible] = useState(false);
@@ -66,7 +68,10 @@ function App() {
             <div className="flex">
               <span className="hidden xl:block md:w-1/3 lg:w-[300px] h-full"></span>
               <Content />
-              <RightContentMenu isInHive={isInHive} />
+              <RightContentMenu
+                isInHive={isInHive}
+                clickHive={() => setIsInHive(isInHive)}
+              />
             </div>
           </>
         ) : (

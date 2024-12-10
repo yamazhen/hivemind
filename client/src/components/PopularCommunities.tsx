@@ -6,11 +6,11 @@ interface Props {
   members: number;
 }
 
-const PopularCommunities = ({hive, members}: Props) => {
+const PopularCommunities = ({ hive, members }: Props) => {
   const formattedMembers = members.toLocaleString();
 
   return (
-    <div className="flex items-center gap-3 p-2">
+    <div className="flex items-center gap-3 p-2 cursor-pointer">
       <FontAwesomeIcon icon={faCircleUser} className="text-3xl" />
       <div className="flex-col">
         <h1 className="text-sm">h/{hive}</h1>
