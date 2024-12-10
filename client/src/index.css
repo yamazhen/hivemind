@@ -87,6 +87,10 @@ body::-webkit-scrollbar-thumb {
     @apply flex px-6 py-2.5 items-center gap-4 rounded-lg hover:bg-zinc-900 font-sans font-light transition-all text-zinc-300 hover:text-zinc-100 cursor-pointer w-full tracking-wide text-[13px];
   }
 
+  .hive-menu-btns {
+    @apply flex px-6 items-center gap-4 rounded-lg hover:bg-zinc-900 font-sans font-light transition-all text-zinc-300 hover:text-zinc-100 cursor-pointer w-full tracking-wide text-[13px];
+  }
+
   .content-filter-btns {
     @apply flex items-center gap-2 hover:bg-zinc-800 rounded-3xl h-8 text-zinc-400 text-center justify-center;
   }
@@ -94,7 +98,8 @@ body::-webkit-scrollbar-thumb {
   .menu {
     @apply h-[calc(100vh-57px)] w-[280px] border-r border-zinc-600 fixed z-10 overflow-y-auto bg-zinc-950 xl:block;
   }
+
   .login-method-btn {
-    @apply bg-zinc-50 text-black flex rounded-full items-center p-2 text-center justify-center gap-2 cursor-pointer
+    @apply bg-zinc-50 text-black flex rounded-full items-center p-2 text-center justify-center gap-2 cursor-pointer;
   }
 }

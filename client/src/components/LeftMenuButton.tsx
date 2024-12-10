@@ -7,9 +7,17 @@ interface Props {
   listicon?: IconProp;
   category?: boolean;
   active?: boolean;
+  hiveProfile?: string;
 }
 
-const LeftMenuButton = ({ children, icon, listicon, category, active }: Props) => {
+const LeftMenuButton = ({
+  children,
+  icon,
+  listicon,
+  category,
+  active,
+  hiveProfile,
+}: Props) => {
   const activeButton = `menu-btns ${active ? "active" : ""}`;
 
   if (!listicon && !category && icon != undefined) {
@@ -22,7 +30,9 @@ const LeftMenuButton = ({ children, icon, listicon, category, active }: Props) =
   } else if (listicon != undefined && category && icon == undefined)
     return (
       <div className="menu-btns justify-between">
-        <h1 className="uppercase tracking-widest text-zinc-400 text-[12px]">{children}</h1>
+        <h1 className="uppercase tracking-widest text-zinc-400 text-[12px]">
+          {children}
+        </h1>
         <FontAwesomeIcon icon={listicon} className="text-sm w-5" />
       </div>
     );
@@ -39,6 +49,23 @@ const LeftMenuButton = ({ children, icon, listicon, category, active }: Props) =
           )}
         </div>
       </li>
+    );
+  } else if (hiveProfile != undefined) {
+    return (
+      <div className="hive-menu-btns">
+        <img
+          src={hiveProfile}
+          alt="image"
+          className="w-8 h-8 rounded-full object-cover"
+        />
+        <h1 className="py-2.5">{children}</h1>
+      </div>
+    );
+  } else {
+    return (
+      <div className="menu-btns">
+        <h1>{children}</h1>
+      </div>
     );
   }
 };

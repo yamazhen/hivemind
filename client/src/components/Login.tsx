@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faX } from "@fortawesome/free-solid-svg-icons";
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import LoginInput from "./LoginInput";
+import { useState } from "react";
 
 interface Props {
   visible: boolean;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const Login = ({ visible = false, onClose }: Props) => {
+  const [signUpMode, setSignUpMode] = useState(false);
   return (
     // TODO: Finish implementing + finish implementing login visible method
 
@@ -29,7 +31,9 @@ const Login = ({ visible = false, onClose }: Props) => {
             </div>
           </div>
           <div className="h-auto overflow-y-auto px-20 max-sm:px-4">
-            <h1 className="text-[1.5rem] mb-2">Log In</h1>
+            <h1 className="text-[1.5rem] mb-2 font-bold">
+              {signUpMode ? "Sign Up" : "Log In"}
+            </h1>
             <p className="text-[0.85rem] font-light mb-3">
               By continuing, you agree to our User Agreement and acknowledge
               that you understand the Privacy Policy.
@@ -54,19 +58,44 @@ const Login = ({ visible = false, onClose }: Props) => {
               <hr className="border-t-1 border-zinc-600 flex-grow" />
             </div>
             <div className="mt-3 flex-col flex gap-3 mb-4">
-              <LoginInput tag="username">Email or Username</LoginInput>
-              <LoginInput tag="password">Password</LoginInput>
+              {signUpMode ? (
+                <>
+                  <LoginInput tag="username">Email or Username</LoginInput>
+                  <LoginInput tag="password">Password</LoginInput>
+                  <LoginInput tag="confirmPassword">
+                    Confirm Password
+                  </LoginInput>
+                  <p className="font-light text-sm">
+                    Already have an account?
+                    <a
+                      className="text-blue-500 cursor-pointer"
+                      onClick={() => setSignUpMode(!signUpMode)}
+                    >
+                      {" "}
+                      Log In
+                    </a>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <LoginInput tag="username">Email or Username</LoginInput>
+                  <LoginInput tag="password">Password</LoginInput>
+                  <a href="#" className="text-blue-500 text-sm font-light">
+                    Forgot password?
+                  </a>
+                  <p className="font-light text-sm">
+                    New to Hivemind?
+                    <a
+                      className="text-blue-500 cursor-pointer"
+                      onClick={() => setSignUpMode(!signUpMode)}
+                    >
+                      {" "}
+                      Sign Up
+                    </a>
+                  </p>
+                </>
+              )}
             </div>
-            <a href="#" className="text-blue-500 text-sm font-light">
-              Forgot password?
-            </a>
-            <p className="font-light text-sm">
-              New to Hivemind?
-              <a href="#" className="text-blue-500">
-                {" "}
-                Sign Up
-              </a>
-            </p>
           </div>
           <div className="w-full h-auto items-center text-center mt-8 px-4 sm:px-20 ">
             <button

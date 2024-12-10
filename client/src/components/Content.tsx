@@ -15,18 +15,21 @@ const Content = () => {
           <FontAwesomeIcon icon={faCaretDown} />
         </div>
       </div>
-      <hr className="border-zinc-600"/>
-      <Post />
-      <hr className="border-zinc-600"/>
-      <Post />
-      <hr className="border-zinc-600"/>
-      <Post />
-      <hr className="border-zinc-600"/>
-      <Post />
-      <hr className="border-zinc-600"/>
-      <Post />
-      <hr className="border-zinc-600"/>
-      <Post />
+      <hr className="border-zinc-600" />
+      <Post
+        image="https://t4.ftcdn.net/jpg/06/81/34/29/360_F_681342927_XnHKRjZBQpDB5lL3dUs1Wd6ZgKnIlJVC.jpg"
+        hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
+      />
+      <hr className="border-zinc-600" />
+      <Post hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif" />
+      <hr className="border-zinc-600" />
+      <Post hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif" />
+      <hr className="border-zinc-600" />
+      <Post hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif" />
+      <hr className="border-zinc-600" />
+      <Post hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif" />
+      <hr className="border-zinc-600" />
+      <Post hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif" />
     </section>
   );
 };

@@ -100,7 +100,10 @@ const Navbar = ({ toggleMenu, toggleLogin, closeLeftMenu }: Props) => {
               ref={dropdownRef}
               className="absolute right-0 mt-2 w-64 bg-zinc-900 rounded-lg shadow-xl text-left font-sans font-light p-6 flex flex-col gap-6 tracking-wide text-zinc-300 cursor-pointer"
             >
-              <li className="hover:text-zinc-50 flex items-center gap-4">
+              <li
+                className="hover:text-zinc-50 flex items-center gap-4"
+                onClick={toggleLogin}
+              >
                 <FontAwesomeIcon icon={faRightToBracket} />
                 <p className="text-sm">Log In / Sign Up</p>
               </li>
