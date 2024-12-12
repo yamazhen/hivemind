@@ -83,7 +83,7 @@ const Post = ({ image, hiveProfile }: Props) => {
           <div className="flex items-center gap-1 justify-center text-center">
             <img
               src={hiveProfile}
-              alt="image"
+              alt="hiveProfile"
               className="w-6 h-6 rounded-full object-cover"
             />
             <p className="text-[12px] font-normal">h/meow</p>
