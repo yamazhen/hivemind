@@ -10,7 +10,7 @@ interface Props {
 const RightContentMenu = ({ isLoggedIn, isInHive }: Props) => {
   if (!isLoggedIn && !isInHive) {
     return (
-      <section className="hidden pt-10 pl-2 pr-6 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start">
+      <section className="hidden pt-10 px-4 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start">
         <div className="w-[300px] bg-zinc-950 rounded-md px-4 py-2 text-zinc-300">
           <h1 className="my-[12px] uppercase text-[12px] tracking-widest">
             Popular Communities
@@ -27,7 +27,7 @@ const RightContentMenu = ({ isLoggedIn, isInHive }: Props) => {
     );
   } else if (isInHive) {
     return (
-      <section className="hidden pt-10 pl-2 pr-6 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start">
+      <section className="hidden pt-10 px-4 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start">
         <div className="w-[300px] bg-zinc-900 rounded-md px-4 py-2 text-xs font-mono flex flex-col gap-1">
           <h1 className="my-2 text-[12px] tracking-wider font-sans font-bold">
             Cat Community
@@ -42,7 +42,7 @@ const RightContentMenu = ({ isLoggedIn, isInHive }: Props) => {
     );
   } else {
     return (
-      <section className="hidden pt-10 pl-2 pr-6 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start"></section>
+      <section className="hidden pt-10 px-4 lg:flex w-1/3 xl:w-1/4 h-full items-center justify-center xl:justify-start"></section>
     );
   }
 };

@@ -76,4 +76,25 @@ const getUserProfile = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
-export { createUser, getAllUsers, performLogin, getUserProfile };
+const getJoinedHives = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+
+  const user = await User.findById(userId).populate("joinedHives");
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  res.status(200).json({
+    joinedHives: user.joinedHives,
+  });
+});
+
+export {
+  createUser,
+  getAllUsers,
+  performLogin,
+  getUserProfile,
+  getJoinedHives,
+};

@@ -10,7 +10,7 @@
 
 body {
   color: white;
-  width: 100dvw;
+  width: calc(100dvw - var(--scrollbar-width));
   overflow-x: hidden;
   height: 100%;
   background: rgb(9 9 11);
@@ -101,5 +101,9 @@ body::-webkit-scrollbar-thumb {
 
   .login-method-btn {
     @apply bg-zinc-50 text-black flex rounded-full items-center p-2 text-center justify-center gap-2 cursor-pointer;
+  }
+
+  .dropdown-btn {
+    @apply hover:text-zinc-50 flex items-center gap-4 cursor-pointer;
   }
 }

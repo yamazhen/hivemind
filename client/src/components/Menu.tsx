@@ -26,13 +26,21 @@ import LeftMenuButton from "./LeftMenuButton";
 import { faHive } from "@fortawesome/free-brands-svg-icons";
 import { useEffect, useState } from "react";
 import React from "react";
+import api from "../utils/api";
 
 interface Props {
   isVisible: boolean;
   isLoggedIn: boolean;
   openCreateHive: () => void;
-  clickHive: () => void;
+  clickHive: (hive: Hive) => void;
   closeMenu: () => void;
+}
+
+interface Hive {
+  _id: string;
+  name: string;
+  profilePic?: string;
+  desc: string;
 }
 
 const Menu = ({
@@ -44,6 +52,7 @@ const Menu = ({
 }: Props) => {
   const [showMore, setShowMore] = useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
+  const [joinedHives, setJoinedHives] = useState<Hive[]>([]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -60,6 +69,24 @@ const Menu = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isVisible, closeMenu]);
+
+  useEffect(() => {
+    const fetchJoinedHives = async () => {
+      try {
+        const { data } = await api.get("/api/users/myJoinedHives");
+        setJoinedHives(data.joinedHives);
+      } catch (error: any) {
+        console.error(
+          "Failed to fetch joined hives:",
+          error.response?.data || error.message,
+        );
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchJoinedHives();
+    }
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -85,10 +112,7 @@ const Menu = ({
                   Recent
                 </LeftMenuButton>
                 {/* hive buttons */}
-                <LeftMenuButton
-                  hiveProfile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTGI0vO83mYNefqgTxdktvrBt-fRabdydNw&s"
-                  onClick={clickHive}
-                >
+                <LeftMenuButton hiveProfile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTGI0vO83mYNefqgTxdktvrBt-fRabdydNw&s">
                   h/Meow
                 </LeftMenuButton>
                 <LeftMenuButton hiveProfile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN7rEMddM-ZtHesWPtal57_zxw-TSdLMjFsw&s">
@@ -107,15 +131,16 @@ const Menu = ({
                 <LeftMenuButton onClick={openCreateHive} icon={faPlus}>
                   Create a Community
                 </LeftMenuButton>
-                <LeftMenuButton hiveProfile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTGI0vO83mYNefqgTxdktvrBt-fRabdydNw&s">
-                  h/Meow
-                </LeftMenuButton>
-                <LeftMenuButton hiveProfile="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN7rEMddM-ZtHesWPtal57_zxw-TSdLMjFsw&s">
-                  h/meow
-                </LeftMenuButton>
-                <LeftMenuButton hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif">
-                  h/meow
-                </LeftMenuButton>
+                {joinedHives.length > 0 &&
+                  joinedHives.map((hive) => (
+                    <LeftMenuButton
+                      key={hive._id}
+                      onClick={() => clickHive(hive)}
+                      hiveProfile={`${hive.profilePic ? hive.profilePic : "https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"}`}
+                    >
+                      {`h/${hive.name}` as string}
+                    </LeftMenuButton>
+                  ))}
               </ul>
             </>
           ) : (

@@ -55,6 +55,12 @@ const Login = ({ visible = false, onClose, onLogin }: Props) => {
       console.error(error.response?.data || error.message);
     }
   };
+
+  const handleClose = () => {
+    setFormData({ username: "", password: "", confirmPassword: "" });
+    onClose();
+  };
+
   if (visible) {
     return (
       <section className="fixed z-50 w-full h-full">
@@ -66,7 +72,7 @@ const Login = ({ visible = false, onClose, onLogin }: Props) => {
             <div className="flex justify-end items-center w-full px-4 sm:px-6 mb-2">
               <div
                 className="bg-zinc-700 py-2 px-2.5 rounded-full items-center flex justify-center hover:bg-zinc-600 cursor-pointer"
-                onClick={onClose}
+                onClick={handleClose}
               >
                 <FontAwesomeIcon icon={faX} />
               </div>

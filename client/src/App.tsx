@@ -7,6 +7,7 @@ import RightContentMenu from "./components/RightContentMenu";
 import HiveBanner from "./components/HiveBanner";
 import CreateCommunity from "./components/CreateCommunity";
 import api from "./utils/api";
+import InPost from "./components/InPost";
 
 interface AppState {
   isLoggedIn: boolean;
@@ -17,6 +18,15 @@ interface AppState {
   isEllipsisVisible: boolean;
   username?: string;
   isInCreateHive: boolean;
+  currentHive?: Hive;
+}
+
+interface Hive {
+  _id: string;
+  name: string;
+  profilePic?: string;
+  desc: string;
+  banner?: string;
 }
 
 function App() {
@@ -31,12 +41,21 @@ function App() {
     isInCreateHive: false,
   });
 
-  const setIsInHive = (value: boolean) => {
-    setState((prevState) => ({
-      ...prevState,
-      isInHive: value,
-      isInPost: !value,
-    }));
+  const setIsInHive = async (hive: Hive) => {
+    try {
+      const { data } = await api.get(`/api/hives/getHive/${hive._id}`);
+      setState((prevState) => ({
+        ...prevState,
+        isInHive: true,
+        isInPost: false,
+        currentHive: { ...hive, ...data },
+      }));
+    } catch (error: any) {
+      console.error(
+        "Failed to fetch hive details:",
+        error.response?.data || error.message,
+      );
+    }
   };
 
   const setIsInPost = (value: boolean) => {
@@ -96,11 +115,15 @@ function App() {
 
   const renderContent = () => (
     <div className="flex">
-      <Content
-        isInPost={state.isInPost}
-        hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
-        postImage="https://wallpapers.com/images/featured/cat-background-b2las0zrosl6anik.jpg"
-      />
+      {state.isInPost ? (
+        <InPost
+          hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
+          postImage="https://wallpapers.com/images/featured/cat-background-b2las0zrosl6anik.jpg"
+          leavePost={() => toggleState("isInPost")}
+        />
+      ) : (
+        <Content clickPost={() => setIsInPost(true)} />
+      )}
       <RightContentMenu
         {...{
           isInHive: state.isInHive || state.isInPost,
@@ -111,7 +134,7 @@ function App() {
   );
 
   return (
-    <main id="main" style={{ scrollbarGutter: "stable" }}>
+    <main id="main">
       <CreateCommunity
         visible={state.isInCreateHive}
         onClose={() => toggleState("isInCreateHive")}
@@ -144,15 +167,22 @@ function App() {
         isVisible={state.isMenuVisible}
         isLoggedIn={state.isLoggedIn}
         openCreateHive={() => toggleState("isInCreateHive")}
-        clickHive={() => setIsInHive(true)}
+        clickHive={setIsInHive}
         closeMenu={() => toggleState("isMenuVisible")}
       />
       <section className="flex flex-col xl:ml-[300px]">
-        {state.isInHive ? (
+        {state.isInHive && state.currentHive ? (
           <>
             <HiveBanner
-              hiveBanner="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4289aa2d-f7a1-4557-a4ce-bddc7171d31f/dfzydb3-fec9e716-17e2-4582-a28b-a2f9923e3b79.jpg/v1/fill/w_1280,h_356,q_75,strp/neon_landscape_ultrawide_wallpaper_by_ultrawidewalls_dfzydb3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzU2IiwicGF0aCI6IlwvZlwvNDI4OWFhMmQtZjdhMS00NTU3LWE0Y2UtYmRkYzcxNzFkMzFmXC9kZnp5ZGIzLWZlYzllNzE2LTE3ZTItNDU4Mi1hMjhiLWEyZjk5MjNlM2I3OS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.AWHwmWFwNw5o0Ncd0WEswZOyfNAy5FsReBp1GLChGn8"
-              hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
+              hiveBanner={
+                state.currentHive.banner ||
+                "https://img.freepik.com/free-photo/digital-art-portrait-adorable-pet-heaven_23-2151478740.jpg"
+              }
+              hiveProfile={
+                state.currentHive.profilePic ||
+                "https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
+              }
+              hiveName={state.currentHive.name}
             />
             {renderContent()}
           </>

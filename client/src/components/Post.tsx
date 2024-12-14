@@ -6,23 +6,28 @@ import {
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { useState } from "react";
 
 interface Props {
   image?: string;
   hiveProfile: string;
+  postTitle: string;
+  postContent?: string;
+  clickPost: () => void;
 }
 
-const Post = ({ image, hiveProfile }: Props) => {
-  // TODO: find a way to limit the amount of text in the content
-  const [message, setMessage] = useState<string>("");
-  axios.get("http://localhost:8000").then((response) => {
-    setMessage(response.data);
-  });
+const Post = ({
+  image,
+  hiveProfile,
+  postTitle,
+  postContent,
+  clickPost,
+}: Props) => {
   if (image != undefined) {
     return (
-      <section className="hover:bg-zinc-900 h-auto py-[4px] px-[16px] rounded-3xl my-1 cursor-pointer">
+      <section
+        className="hover:bg-zinc-900 h-auto py-[4px] px-[16px] rounded-3xl my-1 cursor-pointer"
+        onClick={clickPost}
+      >
         <div className="flex justify-between mb-1">
           <div className="flex items-center gap-1 justify-center text-center">
             <img
@@ -42,16 +47,10 @@ const Post = ({ image, hiveProfile }: Props) => {
           </div>
         </div>
         <div className="font-sans mb-[16px]">
-          {message ? (
-            <h1 className="font-normal text-lg mb-[8px]">{message}</h1>
-          ) : (
-            <h1 className="font-normal text-lg mb-[8px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </h1>
-          )}
+          <h1 className="font-normal text-lg mb-[8px]">{postTitle}</h1>
           <img src={image} alt="image" className="w-full rounded-lg" />
         </div>
-        <div className="flex gap-2 font-sans text-sm items-center text-center">
+        <div className="flex gap-2 font-sans text-sm items-center text-center mb-2">
           <div className="flex items-center bg-zinc-800 rounded-full gap-1">
             <FontAwesomeIcon
               icon={faThumbsUp}
@@ -97,25 +96,15 @@ const Post = ({ image, hiveProfile }: Props) => {
             />
           </div>
         </div>
-        <div className="font-sans mb-[16px]">
-          {message ? (
-            <h1 className="font-normal text-lg mb-[8px]">{message}</h1>
-          ) : (
-            <h1 className="font-normal text-lg mb-[8px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </h1>
-          )}
-          <p className="font-light text-sm max-sm:hidden">
-            Video games have come a long way since their inception in the early
-            1970s. What started as simple pixelated games on arcade machines has
-            now transformed into a multibillion-dollar industry featuring
-            complex narratives, stunning graphics, and immersive experiences. In
-            this post, I want to take you on a journey through the evolution of
-            video games, highlighting key milestones and reflecting on how far
-            we've come.
+        <div className="font-sans mb-4">
+          <h1 className="font-normal text-xl leading-tight w-[700px] break-words mb-2">
+            {postTitle}
+          </h1>
+          <p className="font-light text-sm truncate w-[700px] max-sm:hidden">
+            {postContent}
           </p>
         </div>
-        <div className="flex gap-2 font-sans text-sm items-center text-center">
+        <div className="flex gap-2 font-sans text-sm items-center text-center mb-2">
           <div className="flex items-center bg-zinc-800 rounded-full gap-1">
             <FontAwesomeIcon
               icon={faThumbsUp}

@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Props {
   hiveBanner: string;
   hiveProfile: string;
+  hiveName: string;
 }
-const HiveBanner = ({ hiveBanner, hiveProfile }: Props) => {
+const HiveBanner = ({ hiveName, hiveBanner, hiveProfile }: Props) => {
   return (
-    <section className="px-4 mt-4 mr-[30px]">
+    <section className="px-4 mt-4">
       <img
         src={hiveBanner}
         alt="hiveBanner"
@@ -18,10 +19,10 @@ const HiveBanner = ({ hiveBanner, hiveProfile }: Props) => {
           <img
             src={hiveProfile}
             alt="hiveProfile"
-            className="absolute top-[150px] max-xl:left-[30px] xl:left-[330px] h-24 w-24 rounded-full object-cover border-black border-[4px]"
+            className="absolute top-[150px] max-xl:left-[30px] xl:left-[310px] h-24 w-24 rounded-full object-cover border-black border-[4px]"
           />
           <h1 className="ml-[115px] max-xl:text-2xl text-3xl font-sans font-bold mt-5 tracking-wide">
-            h/meow
+            h/{hiveName}
           </h1>
         </div>
         <div className="flex mt-2 items-center gap-2 text-[14px]">
