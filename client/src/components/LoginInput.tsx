@@ -1,14 +1,25 @@
 import gsap from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 interface Props {
   children: string;
-  tag: string;
+  id: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  name: string;
 }
 
-const LoginInput = ({children, tag}: Props) => {
-  const [inputValue, setInputValue] = useState("");
+const LoginInput = ({
+  children,
+  id,
+  value,
+  onChange,
+  type = "text",
+  name,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const labelRef = useRef<HTMLParagraphElement>(null);
 
   const handleBoxClick = () => {
     if (inputRef.current) {
@@ -16,22 +27,12 @@ const LoginInput = ({children, tag}: Props) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
   const handleInputFocus = (focused: boolean) => {
-    if (focused || inputValue !== "") {
-      gsap.to(`#${tag}`, {
-        fontSize: "0.75rem",
+    if (labelRef.current) {
+      gsap.to(labelRef.current, {
+        fontSize: focused || value !== "" ? "0.75rem" : "1rem",
+        y: focused || value !== "" ? 4 : 12,
         duration: 0.1,
-        y: 4,
-      });
-    } else {
-      gsap.to(`#${tag}`, {
-        fontSize: "1rem",
-        duration: 0.1,
-        y: 12,
       });
     }
   };
@@ -41,17 +42,22 @@ const LoginInput = ({children, tag}: Props) => {
       className="bg-zinc-800 p-4 rounded-3xl font-light font-sans cursor-text h-[62px] flex flex-col justify-center"
       onClick={handleBoxClick}
     >
-      <p className="text-zinc-400 relative translate-y-3 tracking-tighter" id={tag}>
+      <p
+        className="text-zinc-400 relative translate-y-3 tracking-tighter"
+        id={id}
+        ref={labelRef}
+      >
         {children}
       </p>
       <input
-        type="text"
+        name={name}
+        type={type}
         className="bg-inherit outline-none w-full placeholder-zinc-400"
         onFocus={() => handleInputFocus(true)}
         onBlur={() => handleInputFocus(false)}
-        onChange={handleInputChange}
+        onChange={onChange}
         ref={inputRef}
-        value={inputValue}
+        value={value}
       />
     </div>
   );

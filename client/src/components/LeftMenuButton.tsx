@@ -8,6 +8,7 @@ interface Props {
   category?: boolean;
   active?: boolean;
   hiveProfile?: string;
+  onClick?: () => void;
 }
 
 const LeftMenuButton = ({
@@ -17,12 +18,13 @@ const LeftMenuButton = ({
   category,
   active,
   hiveProfile,
+  onClick,
 }: Props) => {
   const activeButton = `menu-btns ${active ? "active" : ""}`;
 
   if (!listicon && !category && icon != undefined) {
     return (
-      <div className={activeButton}>
+      <div className={activeButton} onClick={onClick}>
         <FontAwesomeIcon icon={icon} className="text-lg w-5" />
         <h1 className="capitalize">{children}</h1>
       </div>
@@ -52,7 +54,7 @@ const LeftMenuButton = ({
     );
   } else if (hiveProfile != undefined) {
     return (
-      <div className="hive-menu-btns">
+      <div className="hive-menu-btns" onClick={onClick}>
         <img
           src={hiveProfile}
           alt="image"

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import RightContentMenu from "./components/RightContentMenu";
 import HiveBanner from "./components/HiveBanner";
+import CreateCommunity from "./components/CreateCommunity";
+import api from "./utils/api";
 
 interface AppState {
   isLoggedIn: boolean;
@@ -13,23 +15,72 @@ interface AppState {
   isMenuVisible: boolean;
   isLoginMenuVisible: boolean;
   isEllipsisVisible: boolean;
+  username?: string;
+  isInCreateHive: boolean;
 }
 
 function App() {
   const [state, setState] = useState<AppState>({
-    isLoggedIn: true,
+    isLoggedIn: localStorage.getItem("token") ? true : false,
     isInHive: false,
-    isInPost: true,
+    isInPost: false,
     isMenuVisible: false,
     isLoginMenuVisible: false,
     isEllipsisVisible: false,
+    username: "",
+    isInCreateHive: false,
   });
+
+  const setIsInHive = (value: boolean) => {
+    setState((prevState) => ({
+      ...prevState,
+      isInHive: value,
+      isInPost: !value,
+    }));
+  };
+
+  const setIsInPost = (value: boolean) => {
+    setState((prevState) => ({
+      ...prevState,
+      isInPost: value,
+      isInHive: !value,
+    }));
+  };
+
+  const fetchUserData = async () => {
+    try {
+      const res = await api.get("/api/users/me");
+      if (res.status === 200) {
+        setState((prevState) => ({
+          ...prevState,
+          isLoggedIn: true,
+          username: res.data.username,
+        }));
+      }
+    } catch (error: any) {
+      console.error(error.response?.data || error.message);
+    }
+  };
 
   const toggleState = (key: keyof AppState) => {
     setState((prevState) => ({ ...prevState, [key]: !prevState[key] }));
   };
 
+  const logout = async () => {
+    localStorage.removeItem("token");
+    setState((prevState) => ({
+      ...prevState,
+      isLoggedIn: false,
+      username: "",
+    }));
+  };
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchUserData();
+    }
+
     document.body.style.overflowY = state.isLoginMenuVisible
       ? "hidden"
       : "auto";
@@ -45,7 +96,6 @@ function App() {
 
   const renderContent = () => (
     <div className="flex">
-      <span className="hidden xl:block md:w-1/3 lg:w-[300px] h-full"></span>
       <Content
         isInPost={state.isInPost}
         hiveProfile="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
@@ -61,25 +111,43 @@ function App() {
   );
 
   return (
-    <main id="main">
+    <main id="main" style={{ scrollbarGutter: "stable" }}>
+      <CreateCommunity
+        visible={state.isInCreateHive}
+        onClose={() => toggleState("isInCreateHive")}
+      />
       <Login
         visible={state.isLoginMenuVisible}
         onClose={() => toggleState("isLoginMenuVisible")}
+        onLogin={() => {
+          fetchUserData();
+          toggleState("isLoginMenuVisible");
+        }}
       />
       <Navbar
+        createPost={() => setIsInPost(true)}
         toggleMenu={() => toggleState("isMenuVisible")}
         toggleLogin={() => toggleState("isLoginMenuVisible")}
-        closeLeftMenu={() => toggleState("isEllipsisVisible")}
+        isLoggedIn={state.isLoggedIn}
+        userProfilePic="https://media.tenor.com/dimT0JAAMb4AAAAM/cat-cute.gif"
+        logout={logout}
+        goHome={() => {
+          setState((prevState) => ({
+            ...prevState,
+            isInHive: false,
+            isInPost: false,
+          }));
+        }}
       />
       <span className="block h-[57px]"></span>
-      <Menu isVisible={state.isMenuVisible} isLoggedIn={state.isLoggedIn} />
-      {state.isMenuVisible && (
-        <span
-          className="w-full block xl:hidden absolute bg-black h-full opacity-50"
-          onClick={() => toggleState("isMenuVisible")}
-        />
-      )}
-      <section className="flex flex-col">
+      <Menu
+        isVisible={state.isMenuVisible}
+        isLoggedIn={state.isLoggedIn}
+        openCreateHive={() => toggleState("isInCreateHive")}
+        clickHive={() => setIsInHive(true)}
+        closeMenu={() => toggleState("isMenuVisible")}
+      />
+      <section className="flex flex-col xl:ml-[300px]">
         {state.isInHive ? (
           <>
             <HiveBanner

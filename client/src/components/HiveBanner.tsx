@@ -7,7 +7,7 @@ interface Props {
 }
 const HiveBanner = ({ hiveBanner, hiveProfile }: Props) => {
   return (
-    <section className="ml-[300px] px-4 mt-2 mr-[30px]">
+    <section className="px-4 mt-4 mr-[30px]">
       <img
         src={hiveBanner}
         alt="hiveBanner"
@@ -18,9 +18,9 @@ const HiveBanner = ({ hiveBanner, hiveProfile }: Props) => {
           <img
             src={hiveProfile}
             alt="hiveProfile"
-            className="absolute top-[150px] left-[330px] h-24 w-24 rounded-full object-cover border-black border-[4px]"
+            className="absolute top-[150px] max-xl:left-[30px] xl:left-[330px] h-24 w-24 rounded-full object-cover border-black border-[4px]"
           />
-          <h1 className="ml-[115px] text-3xl font-sans font-bold mt-5 tracking-wide">
+          <h1 className="ml-[115px] max-xl:text-2xl text-3xl font-sans font-bold mt-5 tracking-wide">
             h/meow
           </h1>
         </div>
