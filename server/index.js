@@ -6,6 +6,7 @@ import voteRoutes from "./routes/vote-routes.js";
 import userRoutes from "./routes/user-routes.js";
 import hiveRoutes from "./routes/hive-routes.js";
 import postRoutes from "./routes/post-routes.js";
+import cors from "cors";
 
 const app = express();
 
@@ -15,6 +16,14 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  }),
+);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use("/api/votes", voteRoutes);
