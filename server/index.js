@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://zhen-hivemind.me",
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
