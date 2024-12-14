@@ -4,6 +4,7 @@ import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import LoginInput from "./LoginInput";
 import { useState } from "react";
 import axios from "axios";
+import api from "../utils/api";
 
 interface Props {
   visible: boolean;
@@ -23,11 +24,6 @@ const Login = ({ visible = false, onClose, onLogin }: Props) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  const api = axios.create({
-    baseURL: "http://localhost:80",
-    withCredentials: true,
-  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
