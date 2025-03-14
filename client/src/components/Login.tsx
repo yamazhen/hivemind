@@ -3,7 +3,6 @@ import { faPhone, faX } from "@fortawesome/free-solid-svg-icons";
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import LoginInput from "./LoginInput";
 import { useState } from "react";
-import axios from "axios";
 import api from "../utils/api";
 
 interface Props {
